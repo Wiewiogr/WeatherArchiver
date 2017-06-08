@@ -5,7 +5,6 @@ package Archiver;
  */
 public class WeatherRepository {
     DataContext context;
-
     WeatherRepository(DataContext context){
         this.context = context;
     }
