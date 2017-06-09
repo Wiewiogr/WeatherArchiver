@@ -22,7 +22,14 @@ public class JsonStringToMongoDocumentConverter {
         int pressure = json.get("main").asObject().get("pressure").asInt();
         int visibilty = json.get("visibility").asInt();
         double windSpeed = json.get("wind").asObject().get("speed").asDouble();
-        int windDegree = json.get("wind").asObject().get("deg").asInt();
+
+        int windDegree = -1;
+        if(json.get("wind").asObject().get("deg") != null) {
+            windDegree = json.get("wind").asObject()
+                    .get("deg")
+                    .asInt();
+        }
+
         int clouds = json.get("clouds").asObject().get("all").asInt();
 
         document.append("main", main);
@@ -33,8 +40,8 @@ public class JsonStringToMongoDocumentConverter {
         document.append("pressure", pressure);
         document.append("visibilty", visibilty);
         document.append("windSpeed", windSpeed);
-        document.append("windDegree", windDegree);
         document.append("clouds", clouds);
+        document.append("windDegree", windDegree);
 
         return document;
     }
