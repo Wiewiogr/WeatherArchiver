@@ -25,7 +25,7 @@ public class MongoWeatherContext implements DataContext {
         }
     }
 
-    public void appendCurrentDate(Document document){
+    private void appendCurrentDate(Document document){
         LocalDateTime dateTime = LocalDateTime.now();
         dateTime = dateTime.plusHours(2);
         Document date = new Document();
